@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DiemMonHoc;
+use App\Models\LopHoc;
+use App\Models\PhuongThucDanhGia;
 use Illuminate\Http\Request;
-
+use App\Models\SVDangKyLopHoc;
 class LopHocController extends Controller
 {
     /**
@@ -11,9 +14,19 @@ class LopHocController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function XemDiem($id)
     {
-        //
+        //TODO: Liệt kê bảng điểm theo môn học của sinh viên có id là sinh viên $id
+        $mon_hoc_da_dang_ky = SVDangKyLopHoc::where('sinh_vien_id', $id)->get();
+        foreach($mon_hoc_da_dang_ky as $mon_hoc) {
+            $lop_hoc_id = $mon_hoc->lop_hoc_id;
+            //$lop_hoc = LopHoc::where('id', $lop_hoc_id)->get();
+            $ten_diem = PhuongThucDanhGia::where('lop_hoc_id', $lop_hoc_id)->get();
+            foreach($ten_diem as $diem) {
+                $diem_so[] = DiemMonHoc::where([['lop_hoc_id', $lop_hoc_id], ['phuong_thuc_danh_gia_id', $diem->id], ['sinh_vien_id', $id]])->get();
+            }
+        }
+        return view('sinhvien.index', compact('mon_hoc_da_dang_ky','ten_diem','diem_so'));
     }
 
     /**

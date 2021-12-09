@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('/test', function () {
+    return view('test');
+});
+Route::get('/sinhvien/index/{id}', 'LopHocController@XemDiem');
