@@ -20,7 +20,6 @@ class CreateDiemMonHocsTable extends Migration
             $table->bigInteger('phuong_thuc_danh_gia_id')->unsigned();
             $table->bigInteger('giao_vien_id')->unsigned();
             $table->float('diem')->nullable();
-            $table->integer('version');
             $table->dateTime('ngay_cho_diem');
             $table->timestamps();
 

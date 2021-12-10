@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SinhVien;
 use Illuminate\Http\Request;
 
 class SinhVienController extends Controller
@@ -11,10 +12,11 @@ class SinhVienController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
-    }
+        $thong_tin_sv = SinhVien::find($id)->get();
+        return view('sinhvien.thongtin', compact('thong_tin_sv'));
+    }    
 
     /**
      * Show the form for creating a new resource.

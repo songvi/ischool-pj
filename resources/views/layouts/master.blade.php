@@ -36,11 +36,7 @@
         <div class="row ">
             <!--Menu-->
             <div class="list-group col-sm-2">
-                <a href="#" class="list-group-item list-group-item-action">Thông tin sinh viên</a>
-                <a href="#" class="list-group-item list-group-item-action">Đăng ký môn học</a>
-                <a href="#" class="list-group-item list-group-item-action">Xem kết quả học tập</a>
-                <a href="#" class="list-group-item list-group-item-action">Quản lý lớp học</a>
-                <a href="{{ url('/test') }}" class="list-group-item list-group-item-action">Quản lý lớp học</a>
+                @yield('menu')
             </div>
             <!--End Menu-->
 

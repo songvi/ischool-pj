@@ -27,3 +27,4 @@ Route::get('/test', function () {
     return view('test');
 });
 Route::get('/sinhvien/index/{id}', 'LopHocController@XemDiem');
+Route::get('/sinhvien/thongtin/{id}', 'SinhVienController@index');
