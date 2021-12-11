@@ -1,14 +1,14 @@
 <!--Danh sách menu-->
-<a href="#" class="list-group-item list-group-item-action">
-    Thông tin sinh viên
+<a href="{{ url('/giaovien/index/{id}') }}" class="list-group-item list-group-item-action">
+    Thông tin giáo viên
+</a>
+
+<a href="{{ url('/giaovien/themdiemmh/{id}') }}" class="list-group-item list-group-item-action">
+    Thêm điểm môn học
 </a>
 
 <a href="#" class="list-group-item list-group-item-action">
-    Đăng ký môn học
-</a>
-
-<a href="{{ url('/sinhvien/index/{id}') }}" class="list-group-item list-group-item-action">
-    Xem kết quả học tập
+    Giáo Viên
 </a>
 
 <a href="{{ url('/test') }}" class="list-group-item list-group-item-action">

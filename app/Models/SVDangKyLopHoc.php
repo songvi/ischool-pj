@@ -12,4 +12,9 @@ class SVDangKyLopHoc extends Model
     {
         return $this->belongsTo('App\Models\LopHoc', 'lop_hoc_id');
     }
+
+    public function sinhVien()
+    {
+        return $this->belongsTo('App\Models\SinhVien', 'sinh_vien_id');
+    }
 }

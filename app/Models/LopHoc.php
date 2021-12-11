@@ -32,4 +32,9 @@ class LopHoc extends Model
     {
         return $this->belongsTo('App\Models\MonHoc', 'mon_hoc_id');
     }
+
+    public function chuongTrinhHoc()
+    {
+        return $this->belongsTo('App\Models\ChuongTrinhHoc', 'chuong_trinh_hoc_id');
+    }
 }

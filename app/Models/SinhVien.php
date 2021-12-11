@@ -14,4 +14,14 @@ class SinhVien extends Model
     { 
         return $this->morphOne('App\User', 'profile');
     }
+
+    public function diemMH()
+    {
+        return $this->hasMany('App\Models\DiemMonHoc');
+    }
+
+    public function lop()
+    {
+        return $this->belongsTo('App\Models\Lop', 'lop_id');
+    }
 }

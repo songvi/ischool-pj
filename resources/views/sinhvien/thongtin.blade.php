@@ -8,16 +8,15 @@
 
 <!--Thêm section layout content-->
 @section('content')
-<h1>thongtin sv</h1>
-@foreach($thong_tin_sv as $thong_tin)
-Thông tin: {{  $thong_tin->all()  }} <br>
-ID: {{  $thong_tin->id  }} <br>
-Lớp ID: {{  $thong_tin->lop_id  }} <br>
-Tên họ: {{  $thong_tin->ten_ho  }} <br>
-Tên đệm: {{  $thong_tin->ten_dem  }} <br>
-Tên: {{  $thong_tin->ten  }} <br>
-Năm Sinh: {{  $thong_tin->nam_sinh  }} <br>
-Địa chỉ: {{  $thong_tin->dia_chi  }} <br>
-Số điện thoại: {{  $thong_tin->tel  }} <br>
+<h1 style="text-align: center;">Thông tin sinh viên</h1>
+@foreach($ttsv as $tt)
+ID: {{  $tt->id  }} <br>
+Họ và tên: {{ $tt->ten_ho." ".$tt->ten_dem." ".$tt->ten  }} <br>
+Năm Sinh: {{  $tt->nam_sinh  }} <br>
+Địa chỉ: {{  $tt->dia_chi  }} <br>
+Số điện thoại: {{  $tt->tel  }} <br>
+@endforeach
+@foreach($lop as $l)
+Tên lớp: {{  $l->ten_lop   }}
 @endforeach
 @endsection

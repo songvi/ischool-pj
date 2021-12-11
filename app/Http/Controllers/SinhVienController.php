@@ -14,8 +14,12 @@ class SinhVienController extends Controller
      */
     public function index($id)
     {
-        $thong_tin_sv = SinhVien::find($id)->get();
-        return view('sinhvien.thongtin', compact('thong_tin_sv'));
+        $thong_tin_svs = SinhVien::find($id)->get();
+        foreach($thong_tin_svs as $ttsvs) {
+            $ttsv = $ttsvs->get();
+            $lop = $ttsvs->lop->get();
+        }
+        return view('sinhvien.thongtin', compact('ttsv', 'lop'));
     }    
 
     /**

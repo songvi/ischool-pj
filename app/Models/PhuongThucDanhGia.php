@@ -12,4 +12,9 @@ class PhuongThucDanhGia extends Model
     {
         return $this->belongsTo('App\Models\LopHoc', 'lop_hoc_id');
     }
+
+    public function diemMH()
+    {
+        return $this->hasMany('App\Models\DiemMonHoc');
+    }
 }
