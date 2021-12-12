@@ -8,19 +8,18 @@
 
 <!--Thêm section layout content-->
 @section('content')
-<h1 style="text-align: center;">Danh sách môn học giáo viên giảng dạy</h1>
+<h1 style="text-align: center;">Danh sách lớp học giáo viên giảng dạy</h1>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Tên môn học</th>
-            <th>Ngành</th>
         </tr>
     </thead>
     <tbody>
-            
-           
+        <tr>
+            <td></td>
+        </tr>
     </tbody>
 </table>
 @endsection

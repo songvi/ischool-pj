@@ -15,16 +15,20 @@ class GiaoVienController extends Controller
      */
     public function index($id)
     {
-        $teachers = GiaoVien::find($id)->get();
+        $data = [];
+        $teachers = GiaoVien::where('id', $id)->get();
         foreach($teachers as $teacher) {
+
             // Lấy thông tin giáo viên(Collection)
-            $infotcs = $teacher->get();
+            $infotcs = $teacher->where('id', $id)->get();
             // Lấy thông tin Khoa theo giáo viên(Collection)
-            $khoas = $teacher->khoa->get();
+            $khoas = $teacher->khoa->where('id', $infotcs->id)->get();
         }
+        var_dump($khoas);
         return view('giaovien.index', compact('infotcs', 'khoas'));
     }
 
+    //Lấy danh sách môn học theo giáo viên
     public function getSubjectByTeacher($id)
     {
         $teachers = PhanLopGiaoVien::where('giao_vien_id', $id)->get();
@@ -33,6 +37,13 @@ class GiaoVienController extends Controller
             $tennganhs = $teacher->lopHoc->monHoc->nganh->get();
         }
         return view('giaovien.themdiemmh', compact('mhs','tennganhs'));
+    }
+
+    //Lấy danh sách lớp học theo môn học
+    public function getClassListBySubject($id)
+    {
+        
+        return view('giaovien.lophoc');
     }
 
     /**
