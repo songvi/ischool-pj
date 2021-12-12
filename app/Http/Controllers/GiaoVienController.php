@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GiaoVien;
+use App\Models\LopHoc;
 use App\Models\PhanLopGiaoVien;
 use Illuminate\Http\Request;
 
@@ -15,16 +16,13 @@ class GiaoVienController extends Controller
      */
     public function index($id)
     {
-        $data = [];
         $teachers = GiaoVien::where('id', $id)->get();
         foreach($teachers as $teacher) {
-
             // Lấy thông tin giáo viên(Collection)
             $infotcs = $teacher->where('id', $id)->get();
             // Lấy thông tin Khoa theo giáo viên(Collection)
-            $khoas = $teacher->khoa->where('id', $infotcs->id)->get();
+            $khoas = $teacher->khoa->where('id', $teacher->khoa_id)->get();
         }
-        var_dump($khoas);
         return view('giaovien.index', compact('infotcs', 'khoas'));
     }
 
@@ -33,19 +31,31 @@ class GiaoVienController extends Controller
     {
         $teachers = PhanLopGiaoVien::where('giao_vien_id', $id)->get();
         foreach($teachers as $teacher) {
-            $mhs = $teacher->lopHoc->monHoc->get();
-            $tennganhs = $teacher->lopHoc->monHoc->nganh->get();
+            $lop_hoc = $teacher->lopHoc;
+            $mhs = $lop_hoc->monHoc->where('id', $lop_hoc->mon_hoc_id)->get();
         }
-        return view('giaovien.themdiemmh', compact('mhs','tennganhs'));
+        return view('giaovien.themdiemmh', compact('mhs'));
     }
 
     //Lấy danh sách lớp học theo môn học
     public function getClassListBySubject($id)
     {
-        
-        return view('giaovien.lophoc');
+        $lists = LopHoc::where('mon_hoc_id', $id)->get();
+        return view('giaovien.loptheomon', compact('lists'));
     }
 
+
+    //Lấy danh sách điểm sinh viên theo lớp học
+    public function getScoreListByClass($id)
+    {
+        $lhlists = LopHoc::where('id', $id)->get();
+        foreach($lhlists as $items) {
+            $svs = $items->sinhVienDK;
+            $ten_diems = $items->phuongThucDG;
+            $diemsos = $items->diemMH;
+        }
+        return view('giaovien.diemtheolop', compact('lhlists', 'svs', 'ten_diems', 'diemsos'));
+    }
     /**
      * Show the form for creating a new resource.
      *

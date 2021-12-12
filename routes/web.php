@@ -30,3 +30,5 @@ Route::get('/sinhvien/index/{id}', 'LopHocController@XemDiem');
 Route::get('/sinhvien/thongtin/{id}', 'SinhVienController@index');
 Route::get('/giaovien/index/{id}', 'GiaoVienController@index');
 Route::get('/giaovien/themdiemmh/{id}', 'GiaoVienController@getSubjectByTeacher');
+Route::get('/giaovien/loptheomon/{id}', 'GiaoVienController@getClassListBySubject');
+Route::get('/giaovien/diemtheolop/{id}', 'GiaoVienController@getScoreListByClass');

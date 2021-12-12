@@ -15,8 +15,9 @@ Họ và tên: {{ $tt->ten_ho." ".$tt->ten_dem." ".$tt->ten  }} <br>
 Năm Sinh: {{  $tt->nam_sinh  }} <br>
 Địa chỉ: {{  $tt->dia_chi  }} <br>
 Số điện thoại: {{  $tt->tel  }} <br>
-@endforeach
 @foreach($lop as $l)
 Tên lớp: {{  $l->ten_lop   }}
 @endforeach
+@endforeach
+
 @endsection
